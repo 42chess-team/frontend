@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "lobby": "로비",
+    "game": "게임",
+    "profile": "프로필",
+    "login": "로그인"
+  },
+  "terms": {
+    "agree": "계속하면 <termsLink>서비스 이용약관</termsLink> 및 <privacyLink>개인정보 처리방침</privacyLink>에 동의하는 것으로 간주됩니다.",
+    "termsOfService": "서비스 이용약관",
+    "privacyPolicy": "개인정보 처리방침"
+  },
+  "orContinueWith": "또는 다음으로 계속"
+}

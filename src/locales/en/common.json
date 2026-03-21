@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "lobby": "Lobby",
+    "game": "Game",
+    "profile": "Profile",
+    "login": "Login"
+  },
+  "terms": {
+    "agree": "By clicking continue, you agree to our <termsLink>Terms of Service</termsLink> and <privacyLink>Privacy Policy</privacyLink>.",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "orContinueWith": "Or continue with"
+}
