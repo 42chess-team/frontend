@@ -1,0 +1,32 @@
+{
+  "title": "Lobby",
+  "mode": {
+    "casual": "Casual",
+    "ranked": "Ranked",
+    "friendly": "Friendly"
+  },
+  "category": {
+    "bullet": "Bullet",
+    "blitz": "Blitz",
+    "rapid": "Rapid"
+  },
+  "casual": {
+    "description": "Play without rating changes"
+  },
+  "ranked": {
+    "description": "Compete and climb the leaderboard"
+  },
+  "friendly": {
+    "description": "Play with friends via invite link",
+    "createRoom": "Create Room",
+    "customTime": "Custom Time",
+    "baseTime": "Base Time (min)",
+    "increment": "Increment (sec)",
+    "copyLink": "Copy Invite Link",
+    "waitingForOpponent": "Waiting for opponent...",
+    "or": "or"
+  },
+  "findMatch": "Find Match",
+  "searching": "Searching...",
+  "cancelSearch": "Cancel"
+}

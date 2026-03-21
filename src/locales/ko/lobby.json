@@ -1,0 +1,32 @@
+{
+  "title": "로비",
+  "mode": {
+    "casual": "일반전",
+    "ranked": "랭크전",
+    "friendly": "친선전"
+  },
+  "category": {
+    "bullet": "불릿",
+    "blitz": "블리츠",
+    "rapid": "래피드"
+  },
+  "casual": {
+    "description": "레이팅 변동 없이 가볍게"
+  },
+  "ranked": {
+    "description": "레이팅을 걸고 경쟁"
+  },
+  "friendly": {
+    "description": "초대 링크로 친구와 대국",
+    "createRoom": "방 만들기",
+    "customTime": "커스텀 시간",
+    "baseTime": "기본 시간 (분)",
+    "increment": "가산 시간 (초)",
+    "copyLink": "초대 링크 복사",
+    "waitingForOpponent": "상대를 기다리는 중...",
+    "or": "또는"
+  },
+  "findMatch": "매칭 시작",
+  "searching": "검색 중...",
+  "cancelSearch": "취소"
+}
