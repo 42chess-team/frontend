@@ -1,0 +1,22 @@
+{
+  "title": "Game",
+  "vs": "VS",
+  "resign": "Resign",
+  "offerDraw": "Draw",
+  "moves": "Moves",
+  "noMoves": "No moves yet",
+  "white": "White",
+  "black": "Black",
+  "result": {
+    "win": "Victory!",
+    "lose": "Defeat",
+    "draw": "Draw"
+  },
+  "timer": {
+    "minutes": "min",
+    "seconds": "sec"
+  },
+  "chat": "Chat",
+  "chatEmpty": "No messages yet",
+  "chatPlaceholder": "Type a message..."
+}

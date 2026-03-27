@@ -14,9 +14,7 @@ export const TIME_PRESETS: Record<TimeCategory, TimePreset[]> = {
     { base: 3, increment: 2 },
     { base: 5, increment: 3 },
   ],
-  rapid: [
-    { base: 15, increment: 10 },
-  ],
+  rapid: [{ base: 15, increment: 10 }],
 }
 
 export const TIME_CATEGORIES: TimeCategory[] = ["bullet", "blitz", "rapid"]

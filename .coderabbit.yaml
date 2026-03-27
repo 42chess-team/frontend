@@ -3,3 +3,6 @@ reviews:
   profile: "assertive"
   auto_review:
     enabled: true
+    base_branches:
+      - main
+      - develop
