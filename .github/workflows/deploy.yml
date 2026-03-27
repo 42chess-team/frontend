@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy
         run: |
-          DEPLOY_DIR="/opt/42chess/frontend"
+          DEPLOY_DIR="${{ secrets.DEPLOY_DIR }}"
           TEMP_DIR="${DEPLOY_DIR}/dist_new_$$"
           cp -r dist "$TEMP_DIR"
           mv "${DEPLOY_DIR}/dist" "${DEPLOY_DIR}/dist_old" 2>/dev/null || true
