@@ -1,5 +1,5 @@
 language: "ko-KR"
 reviews:
-  profile: "followup"
+  profile: "assertive"
   auto_review:
     enabled: true
