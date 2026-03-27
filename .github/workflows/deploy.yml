@@ -26,5 +26,5 @@ jobs:
 
       - name: Deploy
         run: |
-          rm -rf /opt/onchess/frontend/dist/*
-          cp -r dist/* /opt/onchess/frontend/dist/
+          rm -rf /opt/42chess/frontend/dist/*
+          cp -r dist/* /opt/42chess/frontend/dist/
