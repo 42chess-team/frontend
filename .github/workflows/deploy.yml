@@ -8,6 +8,9 @@ on:
 
 jobs:
   deploy:
+    concurrency:
+      group: "frontend-deploy-main"
+      cancel-in-progress: true
     runs-on: self-hosted
 
     steps:
