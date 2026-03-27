@@ -1,0 +1,5 @@
+language: "ko-KR"
+reviews:
+  profile: "followup"
+  auto_review:
+    enabled: true
