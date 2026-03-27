@@ -21,7 +21,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.91.0",
-    "@tanstack/react-router": "^1.168.1",
+    "@tanstack/react-router": "^1.168.7",
     "axios": "^1.13.6",
     "chess.js": "^1.4.0",
     "class-variance-authority": "^0.7.1",
