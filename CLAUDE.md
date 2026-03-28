@@ -1,4 +1,4 @@
-# OnChess Frontend
+# 42Chess Frontend
 
 온라인 체스 게임 프론트엔드 프로젝트.
 
@@ -71,6 +71,14 @@ src/
 - 폼은 React Hook Form + Zod resolver
 - 라우팅은 TanStack Router (파일 기반, routeTree.gen.ts 자동 생성)
 - i18n 키는 feature별 네임스페이스 분리
+
+## Issue & PR 템플릿
+
+- Issue/PR 생성 시 `.github/` 아래 템플릿을 반드시 준수
+  - PR: `.github/pull_request_template.md` (관련 이슈, 변경 사항, 테스트, 스크린샷)
+  - Bug: `.github/ISSUE_TEMPLATE/bug_report.md`
+  - Feature: `.github/ISSUE_TEMPLATE/feature_request.md`
+- 템플릿의 섹션 구조를 유지하고, 해당 없는 항목도 삭제하지 말고 "해당 없음" 표기
 
 ## Gotchas
 

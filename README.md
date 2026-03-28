@@ -1,4 +1,4 @@
-# OnChess Frontend
+# 42Chess Frontend
 
 온라인 체스 게임 프론트엔드
 

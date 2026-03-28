@@ -2,7 +2,7 @@ import { HttpResponse, http } from "msw"
 
 const mockUser = {
   id: "1",
-  email: "player@onchess.com",
+  email: "player@42chess.com",
   name: "Chess Player",
   avatar: null,
   provider: "google",
