@@ -14,7 +14,8 @@
     "losses": "Losses",
     "draws": "Draws",
     "totalGames": "Total Games",
-    "winRate": "Win Rate"
+    "winRate": "Win Rate",
+    "error": "Failed to load statistics."
   },
   "games": {
     "title": "Recent Games",

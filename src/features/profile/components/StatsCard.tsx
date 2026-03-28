@@ -7,7 +7,7 @@ import { useProfileStats } from "@/features/profile/hooks/use-profile"
 
 export default function StatsCard() {
   const { t } = useTranslation("profile")
-  const { data: stats, isLoading } = useProfileStats()
+  const { data: stats, isLoading, isError } = useProfileStats()
 
   if (isLoading) {
     return (
@@ -29,6 +29,19 @@ export default function StatsCard() {
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-full" />
           </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  if (isError) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("stats.title")}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-destructive">{t("stats.error")}</p>
         </CardContent>
       </Card>
     )

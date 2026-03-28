@@ -57,6 +57,18 @@ export const Beginner: Story = {
   },
 }
 
+export const Error: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get("*/api/profile/stats", () =>
+          HttpResponse.json({ message: "Internal Server Error" }, { status: 500 }),
+        ),
+      ],
+    },
+  },
+}
+
 export const Loading: Story = {
   parameters: {
     msw: {
