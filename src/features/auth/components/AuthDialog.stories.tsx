@@ -1,5 +1,5 @@
-import { action } from "@storybook/addon-actions"
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { fn } from "storybook/test"
 
 import { AuthDialog } from "./AuthDialog"
 
@@ -8,7 +8,7 @@ const meta: Meta<typeof AuthDialog> = {
   component: AuthDialog,
   args: {
     open: true,
-    onOpenChange: action("onOpenChange"),
+    onOpenChange: fn(),
   },
 }
 export default meta
