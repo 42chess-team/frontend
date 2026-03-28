@@ -43,4 +43,8 @@ export const OddMoves: Story = {
   args: {
     moves: ["e4", "e5", "Nf3"],
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    await expect(canvas.getByText("Nf3")).toBeInTheDocument()
+  },
 }
