@@ -31,4 +31,9 @@ jobs:
         env:
           DEPLOY_DIR: ${{ secrets.DEPLOY_DIR }}
         run: |
-          rsync -a --delete dist/ "$DEPLOY_DIR/"
+          : "${DEPLOY_DIR:?DEPLOY_DIR secret is required}"
+          if [ "$DEPLOY_DIR" = "/" ]; then
+            echo "Refusing to deploy to root (/)."
+            exit 1
+          fi
+          rsync -a --delete dist/ "${DEPLOY_DIR%/}/"
