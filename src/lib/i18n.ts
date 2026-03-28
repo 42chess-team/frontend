@@ -6,10 +6,12 @@ import authEn from "@/locales/en/auth.json"
 import commonEn from "@/locales/en/common.json"
 import gameEn from "@/locales/en/game.json"
 import lobbyEn from "@/locales/en/lobby.json"
+import profileEn from "@/locales/en/profile.json"
 import authKo from "@/locales/ko/auth.json"
 import commonKo from "@/locales/ko/common.json"
 import gameKo from "@/locales/ko/game.json"
 import lobbyKo from "@/locales/ko/lobby.json"
+import profileKo from "@/locales/ko/profile.json"
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -18,12 +20,14 @@ i18n.use(initReactI18next).init({
       auth: authKo,
       game: gameKo,
       lobby: lobbyKo,
+      profile: profileKo,
     },
     en: {
       common: commonEn,
       auth: authEn,
       game: gameEn,
       lobby: lobbyEn,
+      profile: profileEn,
     },
   },
   lng: "en",

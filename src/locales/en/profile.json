@@ -1,0 +1,36 @@
+{
+  "title": "Profile",
+  "tabs": {
+    "overview": "Overview",
+    "settings": "Settings"
+  },
+  "userInfo": {
+    "signedInWith": "Signed in with {{provider}}"
+  },
+  "stats": {
+    "title": "Statistics",
+    "rating": "Rating",
+    "wins": "Wins",
+    "losses": "Losses",
+    "draws": "Draws",
+    "totalGames": "Total Games",
+    "winRate": "Win Rate",
+    "error": "Failed to load statistics."
+  },
+  "games": {
+    "title": "Recent Games",
+    "opponent": "Opponent",
+    "result": "Result",
+    "date": "Date",
+    "ratingChange": "Rating",
+    "empty": "No games played yet.",
+    "win": "Win",
+    "loss": "Loss",
+    "draw": "Draw"
+  },
+  "settings": {
+    "title": "Settings",
+    "comingSoon": "Settings will be available soon."
+  },
+  "notLoggedIn": "Please log in to view your profile."
+}

@@ -8,7 +8,8 @@ const config: StorybookConfig = {
   "addons": [
     "@storybook/addon-vitest",
     "@storybook/addon-a11y",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "msw-storybook-addon"
   ],
   "framework": "@storybook/react-vite"
 };
