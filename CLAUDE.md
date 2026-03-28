@@ -92,3 +92,4 @@ src/
 - [docs/api.md](docs/api.md) — API 스펙/계약 관련 가이드
 - [docs/game.md](docs/game.md) — 체스 게임 로직, Socket.IO 이벤트 정의
 - [docs/i18n.md](docs/i18n.md) — 다국어 키 관리 규칙
+- [docs/testing.md](docs/testing.md) — 테스트 전략 (Unit, Storybook, E2E)

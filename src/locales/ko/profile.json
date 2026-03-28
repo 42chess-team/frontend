@@ -1,0 +1,35 @@
+{
+  "title": "프로필",
+  "tabs": {
+    "overview": "개요",
+    "settings": "설정"
+  },
+  "userInfo": {
+    "signedInWith": "{{provider}}로 로그인됨"
+  },
+  "stats": {
+    "title": "통계",
+    "rating": "레이팅",
+    "wins": "승",
+    "losses": "패",
+    "draws": "무",
+    "totalGames": "총 게임",
+    "winRate": "승률"
+  },
+  "games": {
+    "title": "최근 게임",
+    "opponent": "상대",
+    "result": "결과",
+    "date": "날짜",
+    "ratingChange": "레이팅",
+    "empty": "아직 플레이한 게임이 없습니다.",
+    "win": "승리",
+    "loss": "패배",
+    "draw": "무승부"
+  },
+  "settings": {
+    "title": "설정",
+    "comingSoon": "설정 기능은 곧 제공될 예정입니다."
+  },
+  "notLoggedIn": "프로필을 보려면 로그인해주세요."
+}
