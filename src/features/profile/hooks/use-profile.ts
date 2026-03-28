@@ -1,3 +1,4 @@
+// TODO: 백엔드 API 확정 후 Orval 자동생성 훅으로 교체
 import { useQuery } from "@tanstack/react-query"
 
 import { api } from "@/lib/axios"

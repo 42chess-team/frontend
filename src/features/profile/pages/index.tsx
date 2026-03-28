@@ -9,7 +9,7 @@ import UserInfoCard from "@/features/profile/components/UserInfoCard"
 
 export default function ProfilePage() {
   const { t } = useTranslation("profile")
-  const { isAuthenticated } = useAuthStore()
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
 
   if (!isAuthenticated) {
     return (

@@ -38,6 +38,7 @@ export default function UserInfoCard({ isLoading = false }: { isLoading?: boolea
         <div className="flex items-center gap-4">
           {user.avatar && !imgError ? (
             <img
+              key={user.avatar}
               src={user.avatar}
               alt={user.name}
               className="h-16 w-16 rounded-full object-cover"

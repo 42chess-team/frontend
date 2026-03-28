@@ -72,6 +72,7 @@
     "globals": "^17.4.0",
     "husky": "^9.1.7",
     "jsdom": "^29.0.1",
+    "lint-staged": "^16.4.0",
     "msw": "^2.12.14",
     "msw-storybook-addon": "^2.0.6",
     "orval": "^8.6.2",
@@ -83,6 +84,15 @@
     "typescript-eslint": "^8.56.1",
     "vite": "^8.0.3",
     "vitest": "^4.1.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "src/**/*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "msw": {
     "workerDirectory": [

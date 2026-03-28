@@ -1,23 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { HttpResponse, delay, http } from "msw"
 
+import { withQueryClient } from "../../../../.storybook/decorators"
 import StatsCard from "./StatsCard"
 
 const meta: Meta<typeof StatsCard> = {
   component: StatsCard,
-  decorators: [
-    (Story) => {
-      const queryClient = new QueryClient({
-        defaultOptions: { queries: { retry: false } },
-      })
-      return (
-        <QueryClientProvider client={queryClient}>
-          <Story />
-        </QueryClientProvider>
-      )
-    },
-  ],
+  decorators: [withQueryClient],
 }
 export default meta
 
