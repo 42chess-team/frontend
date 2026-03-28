@@ -1,7 +1,7 @@
 import { defineConfig } from "orval"
 
 export default defineConfig({
-  onchess: {
+  "42chess": {
     input: {
       target: "",
     },
@@ -22,7 +22,7 @@ export default defineConfig({
       afterAllFilesWrite: "prettier --write",
     },
   },
-  onchessZod: {
+  "42chessZod": {
     input: {
       target: "",
     },
