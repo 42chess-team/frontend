@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { GameControls } from "./GameControls"
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof GameControls>
 
 export const Default: Story = {
   args: {
-    onResign: () => {},
-    onOfferDraw: () => {},
+    onResign: action("onResign"),
+    onOfferDraw: action("onOfferDraw"),
   },
 }

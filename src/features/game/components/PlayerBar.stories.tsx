@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { expect, within } from "@storybook/test"
 
 import { PlayerBar } from "./PlayerBar"
 
@@ -22,6 +23,11 @@ export const Active: Story = {
     timeLeft: 245,
     isActive: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    await expect(canvas.getByText("Chess Player")).toBeInTheDocument()
+    await expect(canvas.getByText("4:05")).toBeInTheDocument()
+  },
 }
 
 export const Inactive: Story = {
@@ -37,6 +43,10 @@ export const LowTime: Story = {
     player: { id: "1", name: "Chess Player", rating: 1200, avatar: null },
     timeLeft: 15,
     isActive: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    await expect(canvas.getByText("0:15")).toBeInTheDocument()
   },
 }
 

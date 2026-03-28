@@ -18,7 +18,7 @@ describe("estimateGameDuration", () => {
     expect(estimateGameDuration({ base: 1, increment: 0 })).toBe("~2min")
   })
 
-  it("estimates blitz game (~16min for 5+3)", () => {
+  it("estimates blitz game (~14min for 5+3)", () => {
     // (5*60 + 40*3) * 2 = (300+120)*2 = 840s = 14min
     expect(estimateGameDuration({ base: 5, increment: 3 })).toBe("~14min")
   })
