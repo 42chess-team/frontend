@@ -31,8 +31,9 @@ jobs:
         env:
           DEPLOY_DIR: ${{ secrets.DEPLOY_DIR }}
         run: |
-          TEMP_DIR="${DEPLOY_DIR}/dist_new_$$"
-          cp -r dist "$TEMP_DIR"
-          mv "${DEPLOY_DIR}/dist" "${DEPLOY_DIR}/dist_old" 2>/dev/null || true
-          mv "$TEMP_DIR" "${DEPLOY_DIR}/dist"
-          rm -rf "${DEPLOY_DIR}/dist_old"
+          : "${DEPLOY_DIR:?DEPLOY_DIR secret is required}"
+          if [ "$DEPLOY_DIR" = "/" ]; then
+            echo "Refusing to deploy to root (/)."
+            exit 1
+          fi
+          rsync -a --delete dist/ "${DEPLOY_DIR%/}/"
