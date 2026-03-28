@@ -28,8 +28,9 @@ jobs:
         run: npm run build
 
       - name: Deploy
+        env:
+          DEPLOY_DIR: ${{ secrets.DEPLOY_DIR }}
         run: |
-          DEPLOY_DIR="${{ secrets.DEPLOY_DIR }}"
           TEMP_DIR="${DEPLOY_DIR}/dist_new_$$"
           cp -r dist "$TEMP_DIR"
           mv "${DEPLOY_DIR}/dist" "${DEPLOY_DIR}/dist_old" 2>/dev/null || true
