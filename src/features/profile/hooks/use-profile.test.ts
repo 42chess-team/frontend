@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { renderHook, waitFor } from "@testing-library/react"
-import { http, HttpResponse } from "msw"
+import { HttpResponse, http } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 
@@ -65,7 +65,9 @@ describe("useProfileStats", () => {
 
   it("handles error when API fails", async () => {
     server.use(
-      http.get("*/api/profile/stats", () => HttpResponse.json({ message: "Unauthorized" }, { status: 401 })),
+      http.get("*/api/profile/stats", () =>
+        HttpResponse.json({ message: "Unauthorized" }, { status: 401 }),
+      ),
     )
 
     const { result } = renderHook(() => useProfileStats(), {
@@ -91,9 +93,7 @@ describe("useGameHistory", () => {
   })
 
   it("handles empty game list", async () => {
-    server.use(
-      http.get("*/api/profile/games", () => HttpResponse.json([])),
-    )
+    server.use(http.get("*/api/profile/games", () => HttpResponse.json([])))
 
     const { result } = renderHook(() => useGameHistory(), {
       wrapper: createWrapper(),
