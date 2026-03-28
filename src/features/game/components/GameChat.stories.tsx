@@ -22,7 +22,7 @@ export const Default: Story = {}
 export const WithMessage: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const input = canvas.getByPlaceholderText("Type a message...")
+    const input = canvas.getByRole("textbox")
     await userEvent.type(input, "Hello!")
     await userEvent.click(canvas.getByRole("button"))
     await expect(canvas.getByText("Hello!")).toBeInTheDocument()

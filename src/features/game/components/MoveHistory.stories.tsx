@@ -34,7 +34,8 @@ export const Empty: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await expect(canvas.getByText("No moves yet")).toBeInTheDocument()
+    const items = canvas.queryAllByText(/\d+\./)
+    await expect(items).toHaveLength(0)
   },
 }
 

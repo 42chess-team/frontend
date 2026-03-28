@@ -27,4 +27,14 @@ describe("estimateGameDuration", () => {
     // (15*60 + 40*10) * 2 = (900+400)*2 = 2600s ≈ 43min
     expect(estimateGameDuration({ base: 15, increment: 10 })).toBe("~43min")
   })
+
+  it("estimates bullet game (~5min for 2+1)", () => {
+    // (2*60 + 40*1) * 2 = (120+40)*2 = 320s ≈ 5min
+    expect(estimateGameDuration({ base: 2, increment: 1 })).toBe("~5min")
+  })
+
+  it("estimates blitz game (~11min for 3+2)", () => {
+    // (3*60 + 40*2) * 2 = (180+80)*2 = 520s ≈ 9min
+    expect(estimateGameDuration({ base: 3, increment: 2 })).toBe("~9min")
+  })
 })
