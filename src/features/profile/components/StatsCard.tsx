@@ -64,11 +64,11 @@ export default function StatsCard() {
             <p className="text-sm text-muted-foreground">{t("stats.rating")}</p>
           </div>
           <div>
-            <p className="text-2xl font-bold text-green-600">{stats.wins}</p>
+            <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.wins}</p>
             <p className="text-sm text-muted-foreground">{t("stats.wins")}</p>
           </div>
           <div>
-            <p className="text-2xl font-bold text-red-600">{stats.losses}</p>
+            <p className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.losses}</p>
             <p className="text-sm text-muted-foreground">{t("stats.losses")}</p>
           </div>
           <div>

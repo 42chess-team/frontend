@@ -5,7 +5,7 @@
     "settings": "설정"
   },
   "userInfo": {
-    "signedInWith": "{{provider}}로 로그인됨"
+    "signedInWith": "{{provider}} 계정으로 로그인했습니다"
   },
   "stats": {
     "title": "통계",
@@ -22,7 +22,7 @@
     "opponent": "상대",
     "result": "결과",
     "date": "날짜",
-    "ratingChange": "레이팅",
+    "ratingChange": "레이팅 변화",
     "empty": "아직 플레이한 게임이 없습니다.",
     "win": "승리",
     "loss": "패배",
