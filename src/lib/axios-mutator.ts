@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosRequestConfig } from "axios"
 
-import { axiosInstance } from "./axios"
+import { axiosInstance } from "@/lib/axios"
 
 export const api = <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
   return axiosInstance({
