@@ -40,3 +40,7 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error)
   },
 )
+
+// 다음 PR에서 use-profile.ts가 orval 훅으로 교체되면 제거 예정
+export { api } from "./axios-mutator"
+export type { BodyType, ErrorType } from "./axios-mutator"
