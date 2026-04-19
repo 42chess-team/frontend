@@ -1,5 +1,4 @@
 import Axios from "axios"
-import type { AxiosError, AxiosRequestConfig } from "axios"
 
 import { useAuthStore } from "@/features/auth/stores/auth-store"
 
@@ -41,13 +40,3 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error)
   },
 )
-
-export const api = <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
-  return axiosInstance({
-    ...config,
-    ...options,
-  }).then(({ data }) => data)
-}
-
-export type ErrorType<Error> = AxiosError<Error>
-export type BodyType<BodyData> = BodyData
