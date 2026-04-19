@@ -72,6 +72,13 @@ src/
 - 라우팅은 TanStack Router (파일 기반, routeTree.gen.ts 자동 생성)
 - i18n 키는 feature별 네임스페이스 분리
 
+## Branch Strategy
+
+- `main` — production 브랜치. 릴리즈 시점에만 머지.
+- `develop` — 개발 메인 브랜치. 모든 feature/fix PR의 기본 base.
+- `feature/*`, `fix/*` — 작업 브랜치. `develop`에서 분기하고 `develop`으로 PR.
+- PR 생성 시 base가 `main`이 아닌지 반드시 확인 (실수 방지).
+
 ## Issue & PR 템플릿
 
 - Issue/PR 생성 시 `.github/` 아래 템플릿을 반드시 준수

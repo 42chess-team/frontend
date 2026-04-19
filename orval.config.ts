@@ -3,7 +3,7 @@ import { defineConfig } from "orval"
 export default defineConfig({
   "42chess": {
     input: {
-      target: "",
+      target: "http://localhost:3000/swagger/json",
     },
     output: {
       mode: "tags-split",
@@ -13,7 +13,7 @@ export default defineConfig({
       httpClient: "axios",
       override: {
         mutator: {
-          path: "./src/lib/axios.ts",
+          path: "./src/lib/axios-mutator.ts",
           name: "api",
         },
       },
@@ -24,12 +24,13 @@ export default defineConfig({
   },
   "42chessZod": {
     input: {
-      target: "",
+      target: "http://localhost:3000/swagger/json",
     },
     output: {
       mode: "tags-split",
       client: "zod",
       target: "./src/api",
+      schemas: "./src/api/model",
       fileExtension: ".zod.ts",
     },
     hooks: {
