@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* tslint:disable */
 
 /**
@@ -6,21 +7,21 @@
  * - Please do NOT modify this file.
  */
 
-const PACKAGE_VERSION = "2.12.14"
-const INTEGRITY_CHECKSUM = "4db4a41e972cec1b64cc569c66952d82"
-const IS_MOCKED_RESPONSE = Symbol("isMockedResponse")
+const PACKAGE_VERSION = '2.14.1'
+const INTEGRITY_CHECKSUM = '4db4a41e972cec1b64cc569c66952d82'
+const IS_MOCKED_RESPONSE = Symbol('isMockedResponse')
 const activeClientIds = new Set()
 
-addEventListener("install", function () {
+addEventListener('install', function () {
   self.skipWaiting()
 })
 
-addEventListener("activate", function (event) {
+addEventListener('activate', function (event) {
   event.waitUntil(self.clients.claim())
 })
 
-addEventListener("message", async function (event) {
-  const clientId = Reflect.get(event.source || {}, "id")
+addEventListener('message', async function (event) {
+  const clientId = Reflect.get(event.source || {}, 'id')
 
   if (!clientId || !self.clients) {
     return
@@ -33,20 +34,20 @@ addEventListener("message", async function (event) {
   }
 
   const allClients = await self.clients.matchAll({
-    type: "window",
+    type: 'window',
   })
 
   switch (event.data) {
-    case "KEEPALIVE_REQUEST": {
+    case 'KEEPALIVE_REQUEST': {
       sendToClient(client, {
-        type: "KEEPALIVE_RESPONSE",
+        type: 'KEEPALIVE_RESPONSE',
       })
       break
     }
 
-    case "INTEGRITY_CHECK_REQUEST": {
+    case 'INTEGRITY_CHECK_REQUEST': {
       sendToClient(client, {
-        type: "INTEGRITY_CHECK_RESPONSE",
+        type: 'INTEGRITY_CHECK_RESPONSE',
         payload: {
           packageVersion: PACKAGE_VERSION,
           checksum: INTEGRITY_CHECKSUM,
@@ -55,11 +56,11 @@ addEventListener("message", async function (event) {
       break
     }
 
-    case "MOCK_ACTIVATE": {
+    case 'MOCK_ACTIVATE': {
       activeClientIds.add(clientId)
 
       sendToClient(client, {
-        type: "MOCKING_ENABLED",
+        type: 'MOCKING_ENABLED',
         payload: {
           client: {
             id: client.id,
@@ -70,7 +71,7 @@ addEventListener("message", async function (event) {
       break
     }
 
-    case "CLIENT_CLOSED": {
+    case 'CLIENT_CLOSED': {
       activeClientIds.delete(clientId)
 
       const remainingClients = allClients.filter((client) => {
@@ -87,17 +88,20 @@ addEventListener("message", async function (event) {
   }
 })
 
-addEventListener("fetch", function (event) {
+addEventListener('fetch', function (event) {
   const requestInterceptedAt = Date.now()
 
   // Bypass navigation requests.
-  if (event.request.mode === "navigate") {
+  if (event.request.mode === 'navigate') {
     return
   }
 
   // Opening the DevTools triggers the "only-if-cached" request
   // that cannot be handled by the worker. Bypass such requests.
-  if (event.request.cache === "only-if-cached" && event.request.mode !== "same-origin") {
+  if (
+    event.request.cache === 'only-if-cached' &&
+    event.request.mode !== 'same-origin'
+  ) {
     return
   }
 
@@ -120,7 +124,12 @@ addEventListener("fetch", function (event) {
 async function handleRequest(event, requestId, requestInterceptedAt) {
   const client = await resolveMainClient(event)
   const requestCloneForEvents = event.request.clone()
-  const response = await getResponse(event, client, requestId, requestInterceptedAt)
+  const response = await getResponse(
+    event,
+    client,
+    requestId,
+    requestInterceptedAt,
+  )
 
   // Send back the response clone for the "response:*" life-cycle events.
   // Ensure MSW is active and ready to handle the message, otherwise
@@ -134,7 +143,7 @@ async function handleRequest(event, requestId, requestInterceptedAt) {
     sendToClient(
       client,
       {
-        type: "RESPONSE",
+        type: 'RESPONSE',
         payload: {
           isMockedResponse: IS_MOCKED_RESPONSE in response,
           request: {
@@ -172,18 +181,18 @@ async function resolveMainClient(event) {
     return client
   }
 
-  if (client?.frameType === "top-level") {
+  if (client?.frameType === 'top-level') {
     return client
   }
 
   const allClients = await self.clients.matchAll({
-    type: "window",
+    type: 'window',
   })
 
   return allClients
     .filter((client) => {
       // Get only those clients that are currently visible.
-      return client.visibilityState === "visible"
+      return client.visibilityState === 'visible'
     })
     .find((client) => {
       // Find the client ID that's recorded in the
@@ -212,15 +221,17 @@ async function getResponse(event, client, requestId, requestInterceptedAt) {
     // Remove the "accept" header value that marked this request as passthrough.
     // This prevents request alteration and also keeps it compliant with the
     // user-defined CORS policies.
-    const acceptHeader = headers.get("accept")
+    const acceptHeader = headers.get('accept')
     if (acceptHeader) {
-      const values = acceptHeader.split(",").map((value) => value.trim())
-      const filteredValues = values.filter((value) => value !== "msw/passthrough")
+      const values = acceptHeader.split(',').map((value) => value.trim())
+      const filteredValues = values.filter(
+        (value) => value !== 'msw/passthrough',
+      )
 
       if (filteredValues.length > 0) {
-        headers.set("accept", filteredValues.join(", "))
+        headers.set('accept', filteredValues.join(', '))
       } else {
-        headers.delete("accept")
+        headers.delete('accept')
       }
     }
 
@@ -245,7 +256,7 @@ async function getResponse(event, client, requestId, requestInterceptedAt) {
   const clientMessage = await sendToClient(
     client,
     {
-      type: "REQUEST",
+      type: 'REQUEST',
       payload: {
         id: requestId,
         interceptedAt: requestInterceptedAt,
@@ -256,11 +267,11 @@ async function getResponse(event, client, requestId, requestInterceptedAt) {
   )
 
   switch (clientMessage.type) {
-    case "MOCK_RESPONSE": {
+    case 'MOCK_RESPONSE': {
       return respondWithMock(clientMessage.data)
     }
 
-    case "PASSTHROUGH": {
+    case 'PASSTHROUGH': {
       return passthrough()
     }
   }
@@ -286,7 +297,10 @@ function sendToClient(client, message, transferrables = []) {
       resolve(event.data)
     }
 
-    client.postMessage(message, [channel.port2, ...transferrables.filter(Boolean)])
+    client.postMessage(message, [
+      channel.port2,
+      ...transferrables.filter(Boolean),
+    ])
   })
 }
 
