@@ -3,7 +3,6 @@ import Axios from "axios"
 import { useAuthStore } from "@/features/auth/stores/auth-store"
 
 export const axiosInstance = Axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
   withCredentials: true,
 })
 
@@ -24,11 +23,7 @@ axiosInstance.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
       try {
-        const { data } = await Axios.post(
-          `${import.meta.env.VITE_API_BASE_URL}/api/auth/refresh`,
-          {},
-          { withCredentials: true },
-        )
+        const { data } = await Axios.post("/api/auth/refresh", {}, { withCredentials: true })
         useAuthStore.getState().setAuth(data.accessToken, useAuthStore.getState().user!)
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
         return axiosInstance(originalRequest)
