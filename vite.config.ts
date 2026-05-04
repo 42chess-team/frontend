@@ -13,6 +13,8 @@ const dirname =
   typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
+const BACKEND_URL = process.env.VITE_BACKEND_URL ?? "http://localhost:3000"
+
 export default defineConfig({
   plugins: [
     tanstackRouter({
@@ -25,6 +27,12 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    proxy: {
+      "/api": { target: BACKEND_URL, changeOrigin: true },
+      "/socket.io": { target: BACKEND_URL, ws: true, changeOrigin: true },
     },
   },
   test: {
