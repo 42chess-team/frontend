@@ -1,54 +1,35 @@
 # 42Chess Frontend
 
-온라인 체스 게임 프론트엔드
+React/Vite frontend for the 42Chess online chess platform. The root `../README.md` is the evaluation source of truth.
 
 ## Setup
 
 ```bash
 cp .env.example .env.local
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
+
+For real backend integration, set `VITE_ENABLE_MSW=false` and point `VITE_BACKEND_URL` to the backend when using the Vite dev proxy. The Docker/nginx frontend proxies `/api`, `/socket.io`, `/health`, and `/auth/google/*` to the backend service.
 
 ## Scripts
 
 | Command | Description |
-|---------|-------------|
-| `npm run dev` | 개발 서버 |
-| `npm run build` | 프로덕션 빌드 |
-| `npm run lint` | ESLint 검사 |
-| `npm run format` | Prettier 포맷팅 |
-| `npm run storybook` | Storybook 실행 |
+|---|---|
+| `pnpm dev` | Vite development server |
+| `pnpm build` | TypeScript + production build |
+| `pnpm lint` | ESLint check |
+| `pnpm test` | Vitest unit tests |
+| `pnpm storybook` | Storybook |
 
 ## Tech Stack
 
-- **Framework**: React 19, TypeScript, Vite 8
-- **Routing**: TanStack Router (file-based)
-- **Server State**: TanStack React Query + Axios
-- **Client State**: Zustand
-- **Styling**: Tailwind CSS v4, shadcn/ui (Radix UI)
-- **Form**: React Hook Form + Zod v4
-- **API**: Orval (OpenAPI → 클라이언트 자동 생성)
-- **Realtime**: Socket.IO
-- **Chess**: chess.js + react-chessboard
-- **i18n**: i18next
-- **Testing**: Vitest, Storybook, Playwright
-
-## Project Structure
-
-```
-src/
-  features/           # 도메인별 기능 모듈 (auth, game, lobby, profile)
-    {feature}/
-      api/             # feature 전용 API
-      components/      # feature 전용 컴포넌트
-      hooks/           # feature 전용 hooks
-      pages/           # feature 전용 페이지
-      stores/          # feature 전용 zustand store
-  components/          # 공통 UI (shadcn/ui, layout)
-  hooks/               # 공통 hooks
-  lib/                 # 유틸리티 (axios, utils)
-  routes/              # TanStack Router 라우트 정의
-  stores/              # 공통 zustand stores
-docs/                  # 프로젝트 문서
-```
+- React 19, TypeScript, Vite 8
+- TanStack Router and TanStack React Query
+- Axios + Orval-generated OpenAPI clients
+- Zustand auth state
+- Tailwind CSS v4 and Radix/shadcn-style UI
+- Socket.IO client for `/match` realtime chess
+- chess.js + react-chessboard
+- i18next English/Korean localization
+- Vitest and Playwright-capable browser tooling

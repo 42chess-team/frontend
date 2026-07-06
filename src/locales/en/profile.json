@@ -2,7 +2,8 @@
   "title": "Profile",
   "tabs": {
     "overview": "Overview",
-    "settings": "Settings"
+    "settings": "Settings",
+    "social": "Social"
   },
   "userInfo": {
     "signedInWith": "Signed in with {{provider}}"
@@ -32,5 +33,52 @@
     "title": "Settings",
     "comingSoon": "Settings will be available soon."
   },
-  "notLoggedIn": "Please log in to view your profile."
+  "notLoggedIn": "Please log in to view your profile.",
+  "social": {
+    "title": "Social",
+    "description": "Manage friends, presence, and direct messages.",
+    "loading": "Loading...",
+    "presence": {
+      "title": "Presence",
+      "signedInAs": "Signed in as @{{username}}",
+      "status": {
+        "ONLINE": "Online",
+        "AWAY": "Away",
+        "OFFLINE": "Offline"
+      }
+    },
+    "friends": {
+      "title": "Friends",
+      "usernameLabel": "Friend username",
+      "usernamePlaceholder": "Username to add",
+      "add": "Add",
+      "adding": "Adding...",
+      "remove": "Remove",
+      "empty": "No friends yet."
+    },
+    "chat": {
+      "title": "Direct messages",
+      "open": "Chat",
+      "peerLabel": "Chat peer username",
+      "peerPlaceholder": "Peer username",
+      "selectPeer": "Select or type a username to chat.",
+      "empty": "No messages with this user yet.",
+      "messageLabel": "Message body",
+      "messagePlaceholder": "Type a message...",
+      "send": "Send",
+      "sending": "Sending..."
+    },
+    "errors": {
+      "friend": "Friend action failed.",
+      "presence": "Presence update failed.",
+      "chat": "Chat action failed."
+    }
+  },
+  "publicProfile": {
+    "title": "Public profile",
+    "summary": "Profile summary",
+    "memberSince": "Member since {{date}}",
+    "notFoundTitle": "Profile not found",
+    "notFoundDescription": "This user does not exist or is no longer active."
+  }
 }

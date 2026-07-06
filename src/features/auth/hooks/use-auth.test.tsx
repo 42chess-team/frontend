@@ -16,6 +16,18 @@ const mockUser = {
 }
 
 const server = setupServer(
+  http.post("*/api/auth/login", () =>
+    HttpResponse.json({
+      accessToken: "mock-local-token",
+      user: { ...mockUser, provider: "local" },
+    }),
+  ),
+  http.post("*/api/auth/signup", () =>
+    HttpResponse.json({
+      accessToken: "mock-signup-token",
+      user: { ...mockUser, provider: "local" },
+    }),
+  ),
   http.post("*/api/auth/callback", () =>
     HttpResponse.json({
       accessToken: "mock-access-token",
@@ -73,6 +85,67 @@ describe("initAuth", () => {
 })
 
 describe("useAuth", () => {
+  it("localLogin sets auth state from email/password login", async () => {
+    const { result } = renderHook(() => useAuth())
+    await result.current.localLogin({
+      email: "player@42chess.com",
+      password: "password123",
+    })
+    const state = useAuthStore.getState()
+
+    expect(state.accessToken).toBe("mock-local-token")
+    expect(state.user?.provider).toBe("local")
+    expect(state.isAuthenticated).toBe(true)
+  })
+
+  it("signup sets auth state from email/password signup", async () => {
+    const { result } = renderHook(() => useAuth())
+    await result.current.signup({
+      email: "new@42chess.com",
+      username: "new_player",
+      displayName: "New Player",
+      password: "password123",
+    })
+    const state = useAuthStore.getState()
+
+    expect(state.accessToken).toBe("mock-signup-token")
+    expect(state.user?.provider).toBe("local")
+    expect(state.isAuthenticated).toBe(true)
+  })
+
+  it("normalizes backend auth response user fields for the frontend store", async () => {
+    server.use(
+      http.post("*/api/auth/login", () =>
+        HttpResponse.json({
+          accessToken: "backend-token",
+          user: {
+            id: "2",
+            email: "backend@42chess.com",
+            username: "backend_user",
+            displayName: "Backend User",
+            avatarUrl: "https://example.com/avatar.png",
+          },
+        }),
+      ),
+    )
+
+    const { result } = renderHook(() => useAuth())
+    await result.current.localLogin({
+      email: "backend@42chess.com",
+      password: "password123",
+    })
+    const state = useAuthStore.getState()
+
+    expect(state.user).toEqual({
+      id: "2",
+      email: "backend@42chess.com",
+      name: "Backend User",
+      avatar: "https://example.com/avatar.png",
+      provider: "local",
+      username: "backend_user",
+    })
+  })
+
   it("logout clears auth state", async () => {
     useAuthStore.getState().setAuth("mock-token", mockUser)
 

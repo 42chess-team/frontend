@@ -20,19 +20,21 @@ export function ChessBoard({
   position,
   orientation,
   onMove,
+  canMove = true,
 }: {
   game: Chess
   position: string
   orientation: "white" | "black"
-  onMove: (from: string, to: string) => boolean
+  onMove: (from: string, to: string, promotion?: string) => void
+  canMove?: boolean
 }) {
   const [selectedSquare, setSelectedSquare] = useState<Square | null>(null)
 
   const legalMoves = useMemo(() => {
-    if (!selectedSquare) return []
+    if (!selectedSquare || !canMove) return []
     return game.moves({ square: selectedSquare, verbose: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps -- position triggers recalc of legal moves
-  }, [game, selectedSquare, position])
+  }, [game, selectedSquare, position, canMove])
 
   const squareStyles = useMemo(() => {
     const styles: Record<string, React.CSSProperties> = {}
@@ -45,54 +47,64 @@ export function ChessBoard({
     return styles
   }, [selectedSquare, legalMoves])
 
+  const submitIfLegal = useCallback(
+    (from: Square, to: Square) => {
+      if (!canMove) return false
+      const legalMove = legalMoves.find((move) => move.from === from && move.to === to)
+      if (!legalMove) return false
+      onMove(from, to, legalMove.promotion || "q")
+      setSelectedSquare(null)
+      return true
+    },
+    [canMove, legalMoves, onMove],
+  )
+
   const handleSquareClick = useCallback(
     ({ square }: { square: string | null }) => {
-      if (!square) return
+      if (!square || !canMove) return
       const sq = square as Square
-      if (selectedSquare) {
-        const moved = onMove(selectedSquare, sq)
-        if (!moved) {
-          const piece = game.get(sq)
-          if (piece && piece.color === game.turn()) {
-            setSelectedSquare(sq)
-          } else {
-            setSelectedSquare(null)
-          }
-        } else {
-          setSelectedSquare(null)
-        }
+      if (selectedSquare && submitIfLegal(selectedSquare, sq)) return
+
+      const piece = game.get(sq)
+      if (piece && piece.color === game.turn()) {
+        setSelectedSquare(sq)
+      } else {
+        setSelectedSquare(null)
       }
     },
-    [selectedSquare, onMove, game],
+    [selectedSquare, submitIfLegal, game, canMove],
   )
 
   const handlePieceClick = useCallback(
     ({ square }: { square: string | null }) => {
-      if (!square) return
+      if (!square || !canMove) return
       const sq = square as Square
-      if (selectedSquare && selectedSquare !== sq) {
-        const moved = onMove(selectedSquare, sq)
-        if (moved) {
-          setSelectedSquare(null)
-          return
-        }
-      }
+      if (selectedSquare && selectedSquare !== sq && submitIfLegal(selectedSquare, sq)) return
+
       const piece = game.get(sq)
       if (piece && piece.color === game.turn()) {
         setSelectedSquare(selectedSquare === sq ? null : sq)
       }
     },
-    [selectedSquare, onMove, game],
+    [selectedSquare, submitIfLegal, game, canMove],
   )
 
   const onPieceDrop = useCallback(
     ({ sourceSquare, targetSquare }: { sourceSquare: string; targetSquare: string | null }) => {
-      if (!targetSquare) return false
-      const moved = onMove(sourceSquare, targetSquare)
-      if (moved) setSelectedSquare(null)
-      return moved
+      if (!targetSquare || !canMove) return false
+      const from = sourceSquare as Square
+      const to = targetSquare as Square
+      const piece = game.get(from)
+      const moves = game.moves({ square: from, verbose: true })
+      const legalMove = moves.find((move) => move.to === to)
+      if (piece && piece.color === game.turn() && legalMove) {
+        onMove(from, to, legalMove.promotion || "q")
+        setSelectedSquare(null)
+      }
+      // Never locally accept the drop; the board advances only after the server event updates FEN.
+      return false
     },
-    [onMove],
+    [canMove, game, onMove],
   )
 
   return (

@@ -4,6 +4,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useAuthStore } from "@/features/auth/stores/auth-store"
 import GameHistoryCard from "@/features/profile/components/GameHistoryCard"
+import SocialPanel from "@/features/profile/components/SocialPanel"
 import StatsCard from "@/features/profile/components/StatsCard"
 import UserInfoCard from "@/features/profile/components/UserInfoCard"
 
@@ -25,6 +26,7 @@ export default function ProfilePage() {
       <Tabs defaultValue="overview">
         <TabsList>
           <TabsTrigger value="overview">{t("tabs.overview")}</TabsTrigger>
+          <TabsTrigger value="social">{t("tabs.social")}</TabsTrigger>
           <TabsTrigger value="settings">{t("tabs.settings")}</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
@@ -33,6 +35,9 @@ export default function ProfilePage() {
             <StatsCard />
             <GameHistoryCard />
           </div>
+        </TabsContent>
+        <TabsContent value="social">
+          <SocialPanel />
         </TabsContent>
         <TabsContent value="settings">
           <Card>

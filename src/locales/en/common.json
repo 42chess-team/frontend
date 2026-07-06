@@ -10,5 +10,60 @@
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
   },
+  "legal": {
+    "updated": "Effective July 6, 2026"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "42Chess collects only the information needed to run accounts, matchmaking, games, ratings, profiles, friends, and basic messages for an online chess service.",
+    "sections": {
+      "account": {
+        "title": "Account information",
+        "body": "When you create an account, we process your email address, display name, password credentials, OAuth provider identifier when used, and session tokens. Passwords should be stored only as secure hashes by the service."
+      },
+      "gameplay": {
+        "title": "Game and social activity",
+        "body": "We store chess moves, game results, ratings, match history, profile details, friendship state, online status, and direct messages so the platform can provide multiplayer games and user interaction features."
+      },
+      "security": {
+        "title": "Security and operations",
+        "body": "We may process IP address, browser metadata, request logs, and abuse signals to protect accounts, investigate cheating or misuse, maintain service reliability, and debug errors."
+      },
+      "retention": {
+        "title": "Retention and control",
+        "body": "Account and gameplay records are kept while your account is active or while needed for integrity, legal, or operational reasons. You may request account deletion or correction of inaccurate profile information."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For privacy requests, contact the 42Chess operators through the project maintainers or the support channel provided with the deployed service."
+      }
+    }
+  },
+  "termsPage": {
+    "title": "Terms of Service",
+    "intro": "These terms govern access to 42Chess, an online chess platform for account-based multiplayer games, profiles, friends, ratings, and basic communication.",
+    "sections": {
+      "accounts": {
+        "title": "Accounts",
+        "body": "You are responsible for keeping your login credentials secure and for activity under your account. Use accurate account information and do not impersonate another player or attempt to access another account."
+      },
+      "fairPlay": {
+        "title": "Fair play",
+        "body": "Do not cheat, automate play, exploit bugs, disrupt games, harass other users, or manipulate ratings. 42Chess may restrict accounts or remove content when needed to protect fair play and service safety."
+      },
+      "content": {
+        "title": "User content",
+        "body": "Profile text, display names, direct messages, and other user-provided content must be lawful and respectful. You keep ownership of your content but allow 42Chess to process it to operate the service."
+      },
+      "availability": {
+        "title": "Service availability",
+        "body": "42Chess is provided for gameplay and evaluation use without a guarantee of uninterrupted availability. Features may change as the platform is improved."
+      },
+      "contact": {
+        "title": "Questions",
+        "body": "For questions about these terms, contact the 42Chess operators through the project maintainers or the support channel provided with the deployed service."
+      }
+    }
+  },
   "orContinueWith": "Or continue with"
 }

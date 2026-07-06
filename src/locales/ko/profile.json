@@ -2,7 +2,8 @@
   "title": "프로필",
   "tabs": {
     "overview": "개요",
-    "settings": "설정"
+    "settings": "설정",
+    "social": "소셜"
   },
   "userInfo": {
     "signedInWith": "{{provider}} 계정으로 로그인했습니다"
@@ -32,5 +33,52 @@
     "title": "설정",
     "comingSoon": "설정 기능은 곧 제공될 예정입니다."
   },
-  "notLoggedIn": "프로필을 보려면 로그인해주세요."
+  "notLoggedIn": "프로필을 보려면 로그인해주세요.",
+  "social": {
+    "title": "소셜",
+    "description": "친구, 접속 상태, 직접 메시지를 관리합니다.",
+    "loading": "불러오는 중...",
+    "presence": {
+      "title": "접속 상태",
+      "signedInAs": "@{{username}}로 로그인했습니다",
+      "status": {
+        "ONLINE": "온라인",
+        "AWAY": "자리 비움",
+        "OFFLINE": "오프라인"
+      }
+    },
+    "friends": {
+      "title": "친구",
+      "usernameLabel": "친구 사용자 이름",
+      "usernamePlaceholder": "추가할 사용자 이름",
+      "add": "추가",
+      "adding": "추가 중...",
+      "remove": "삭제",
+      "empty": "아직 친구가 없습니다."
+    },
+    "chat": {
+      "title": "직접 메시지",
+      "open": "채팅",
+      "peerLabel": "채팅 상대 사용자 이름",
+      "peerPlaceholder": "상대 사용자 이름",
+      "selectPeer": "채팅할 사용자 이름을 선택하거나 입력하세요.",
+      "empty": "아직 이 사용자와 메시지가 없습니다.",
+      "messageLabel": "메시지 내용",
+      "messagePlaceholder": "메시지를 입력하세요...",
+      "send": "전송",
+      "sending": "전송 중..."
+    },
+    "errors": {
+      "friend": "친구 작업에 실패했습니다.",
+      "presence": "접속 상태 업데이트에 실패했습니다.",
+      "chat": "채팅 작업에 실패했습니다."
+    }
+  },
+  "publicProfile": {
+    "title": "공개 프로필",
+    "summary": "프로필 요약",
+    "memberSince": "{{date}}부터 가입",
+    "notFoundTitle": "프로필을 찾을 수 없습니다",
+    "notFoundDescription": "이 사용자가 없거나 더 이상 활성 상태가 아닙니다."
+  }
 }
